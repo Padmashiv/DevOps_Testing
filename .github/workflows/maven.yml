@@ -8,6 +8,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+env:
+APP_NAME: google site
 
 jobs:
   test:
@@ -22,8 +24,18 @@ jobs:
 
       # Execute unit tests
       - name: Unit Test
-        run: ./gradlew testDebugUnitTest
+        run: java clean
 
+      - name: Restore dependencies
+        run: java restore
+        
+        - name: Clean output folder
+        run: java clean
+        
+        "test_settings": {
+        "default": {
+        'launch_url': 'https://www.google.com/'
+        
       - name: Google Test Report
         uses: asadmansr/Google-test-report-action@v1.2.0
         if: ${{ always() }} # IMPORTANT: run Google Test Report regardless
