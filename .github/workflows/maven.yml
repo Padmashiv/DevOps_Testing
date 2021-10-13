@@ -23,19 +23,30 @@ jobs:
           java-version: 1.8
 
       # Execute unit tests
-      - name: Unit Test
-        run: java clean
+      - name: Google Test
+        run: mvn clean
 
       - name: Restore dependencies
-        run: java restore
+        run: mvn restore
         
-        - name: Clean output folder
-        run: java clean
+      - name: Clean output folder
+        run: mvn clean
         
-        "test_settings": {
+       "test_settings": {
         "default": {
         'launch_url': 'https://www.google.com/'
-        
+        "default_path_prefix": "",
+        "persist_globals" : true,
+        "desiredCapabilities" : {
+        "browserName" : "chrome" ,
+        "javascriptEnabled" : trus,
+        "acceptSslCerts" : true,
+        "chromeOptions" : true,
+        "args" : ["--no-sandbox"]
+        }
+        }
+        }
+                
       - name: Google Test Report
         uses: asadmansr/Google-test-report-action@v1.2.0
         if: ${{ always() }} # IMPORTANT: run Google Test Report regardless
