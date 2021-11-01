@@ -32,7 +32,8 @@ jobs:
       - name: Clean output folder
         run: mvn clean
         
-       "test_settings": {
+         "test_settings":
+         {
         "default": {
         'launch_url': 'https://www.google.com/'
         "default_path_prefix": "",
